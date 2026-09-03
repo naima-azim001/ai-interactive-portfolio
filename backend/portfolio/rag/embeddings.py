@@ -13,13 +13,19 @@ class EmbeddingService:
     def create_embedding(self, text):
         try:
             response = requests.post(
-                f"{self.base_url}/api/embed",
+                f"{self.base_url}/api/embeddings",
                 json={"model": self.model, "prompt": text},
                 timeout=30,
             )
             response.raise_for_status()
             data = response.json()
-            return np.array(data.get("embedding", []), dtype=np.float32)
+            embedding = data.get("embedding")
+            if not embedding:
+                raise RuntimeError(
+                    f"Embedding model returned empty result for prompt. "
+                    f"Check that '{self.model}' is a valid embedding model in Ollama."
+                )
+            return np.array(embedding, dtype=np.float32)
         except Exception as e:
             raise RuntimeError(f"Failed to generate embedding: {e}")
 

@@ -36,7 +36,7 @@ export default function Contact() {
       <h2 className="text-2xl font-bold text-white mb-8">Contact</h2>
       <form onSubmit={handleSubmit} className="max-w-2xl space-y-4 bg-slate-900 p-6 rounded-xl">
         {status && (
-          <div className="bg-green-900/50 text-green-300 px-4 py-3 rounded-lg text-sm">{status}</div>
+          <div className="bg-cyan-900/50 text-cyan-300 px-4 py-3 rounded-lg text-sm">{status}</div>
         )}
         {error && (
           <div className="bg-red-900/50 text-red-300 px-4 py-3 rounded-lg text-sm">{error}</div>
@@ -50,7 +50,7 @@ export default function Contact() {
             maxLength="100"
             value={form.name}
             onChange={handleChange}
-            className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-emerald-500"
+            className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
           />
           <input
             type="email"
@@ -60,7 +60,7 @@ export default function Contact() {
             maxLength="254"
             value={form.email}
             onChange={handleChange}
-            className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-emerald-500"
+            className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
           />
         </div>
         <input
@@ -71,7 +71,7 @@ export default function Contact() {
           maxLength="200"
           value={form.subject}
           onChange={handleChange}
-          className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-emerald-500"
+          className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
         />
         <textarea
           name="message"
@@ -81,11 +81,11 @@ export default function Contact() {
           rows="6"
           value={form.message}
           onChange={handleChange}
-          className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-emerald-500"
+          className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
         />
         <button
           type="submit"
-          className="flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors"
+          className="flex items-center gap-2 px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors"
         >
           <Send size={16} /> Send Message
         </button>

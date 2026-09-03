@@ -29,7 +29,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0f172a]/80 backdrop-blur-md border-b border-slate-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         <Link to="/" className="text-lg font-bold text-white">
-          Naima<span className="text-emerald-400">.Azim</span>
+          Naima<span className="text-cyan-400">.Azim</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
           {links.map((link) => (
@@ -37,7 +37,7 @@ export default function Navbar() {
               key={link.id}
               href={`/#${link.id}`}
               onClick={(e) => handleClick(e, link.id)}
-              className="text-sm text-slate-400 hover:text-emerald-300 transition-colors"
+              className="text-sm text-slate-400 hover:text-cyan-300 transition-colors"
             >
               {link.label}
             </a>

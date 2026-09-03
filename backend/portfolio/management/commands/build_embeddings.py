@@ -48,7 +48,7 @@ class Command(BaseCommand):
                 source_type=source_type, source_id=source_id
             ).first()
 
-            if existing and existing.content == content:
+            if existing and existing.content == content and existing.embedding:
                 skipped += 1
                 continue
 

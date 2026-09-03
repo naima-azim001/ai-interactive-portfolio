@@ -42,7 +42,7 @@ export default function ProjectDetail() {
     return (
       <div className="pt-32 pb-16 text-center">
         <p className="text-red-400 mb-4">{error}</p>
-        <Link to="/" className="text-emerald-400 hover:text-emerald-300">
+        <Link to="/" className="text-cyan-400 hover:text-cyan-300">
           ← Back to projects
         </Link>
       </div>
@@ -62,7 +62,7 @@ export default function ProjectDetail() {
 
   return (
     <div className="pt-32 pb-16">
-      <Link to="/#projects" className="inline-flex items-center gap-1 text-sm text-slate-400 hover:text-emerald-300 mb-6 transition-colors">
+      <Link to="/#projects" className="inline-flex items-center gap-1 text-sm text-slate-400 hover:text-cyan-300 mb-6 transition-colors">
         <ArrowLeft size={16} /> Back to Projects
       </Link>
 
@@ -70,7 +70,7 @@ export default function ProjectDetail() {
         <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
           <h1 className="text-3xl sm:text-4xl font-bold text-white">{project.title}</h1>
           {project.featured && (
-            <span className="flex items-center gap-1 text-xs bg-emerald-600 text-white px-2 py-1 rounded-full">
+            <span className="flex items-center gap-1 text-xs bg-cyan-600 text-white px-2 py-1 rounded-full">
               <Star size={12} /> Featured
             </span>
           )}
@@ -102,7 +102,7 @@ export default function ProjectDetail() {
               href={project.live_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors"
             >
               <ExternalLink size={18} /> Live Demo
             </a>
@@ -119,7 +119,7 @@ export default function ProjectDetail() {
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="text-xs bg-slate-800 text-emerald-300 px-3 py-1.5 rounded-full"
+                className="text-xs bg-slate-800 text-cyan-300 px-3 py-1.5 rounded-full"
               >
                 {tech}
               </span>
@@ -143,11 +143,11 @@ export default function ProjectDetail() {
               <Link
                 key={p.id}
                 to={`/projects/${p.slug}`}
-                className="bg-slate-900 rounded-xl p-6 hover:ring-1 hover:ring-emerald-500 transition-all group"
+                className="bg-slate-900 rounded-xl p-6 hover:ring-1 hover:ring-cyan-500 transition-all group"
               >
                 <h3 className="text-lg font-semibold text-white mb-2">{p.title}</h3>
                 <p className="text-sm text-slate-400 mb-3 line-clamp-2">{p.description}</p>
-                <span className="inline-flex items-center gap-1 text-sm text-emerald-400 group-hover:text-emerald-300">
+                <span className="inline-flex items-center gap-1 text-sm text-cyan-400 group-hover:text-cyan-300">
                   View details <ArrowRight size={16} />
                 </span>
               </Link>

@@ -25,7 +25,7 @@ export default function Timeline() {
       <div className="relative border-l border-slate-800 ml-4">
         {items.map((item) => (
           <div key={item.id} className="mb-8 pl-8 relative">
-            <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-emerald-500" />
+            <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-cyan-500" />
             <div className="flex flex-wrap items-center gap-2 mb-2">
               <h3 className="text-lg font-semibold text-white">{item.title}</h3>
               <span className="text-sm text-slate-500">
@@ -34,7 +34,7 @@ export default function Timeline() {
               </span>
             </div>
             {item.organization && (
-              <p className="text-sm text-emerald-400 mb-2">{item.organization}</p>
+              <p className="text-sm text-cyan-400 mb-2">{item.organization}</p>
             )}
             <span className="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full capitalize">
               {item.item_type.replace('_', ' ')}

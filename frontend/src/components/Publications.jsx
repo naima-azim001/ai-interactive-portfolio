@@ -21,7 +21,7 @@ export default function Publications() {
         {publications.map((pub) => (
           <div key={pub.id} className="bg-slate-900 rounded-xl p-6">
             <h3 className="text-lg font-semibold text-white mb-2">{pub.title}</h3>
-            <p className="text-sm text-emerald-400 mb-2">{pub.authors}</p>
+            <p className="text-sm text-cyan-400 mb-2">{pub.authors}</p>
             <p className="text-sm text-slate-500 mb-3">
               {pub.venue} · {pub.year}
             </p>
@@ -33,7 +33,7 @@ export default function Publications() {
                 href={pub.publication_url || `https://doi.org/${pub.doi}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 text-sm text-emerald-400 hover:text-emerald-300"
+                className="flex items-center gap-1 text-sm text-cyan-400 hover:text-cyan-300"
               >
                 <ExternalLink size={16} /> View Publication
               </a>

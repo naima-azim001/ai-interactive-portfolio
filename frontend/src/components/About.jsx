@@ -15,7 +15,7 @@ export default function About() {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
         <div className="bg-slate-900 p-6 rounded-xl">
-          <h3 className="text-emerald-400 font-semibold mb-3">Expertise</h3>
+          <h3 className="text-cyan-400 font-semibold mb-3">Expertise</h3>
           <ul className="text-slate-400 space-y-2">
             <li>• Website Design</li>
             <li>• Android GUI Design</li>
@@ -23,7 +23,7 @@ export default function About() {
           </ul>
         </div>
         <div className="bg-slate-900 p-6 rounded-xl">
-          <h3 className="text-emerald-400 font-semibold mb-3">Soft Skills</h3>
+          <h3 className="text-cyan-400 font-semibold mb-3">Soft Skills</h3>
           <ul className="text-slate-400 space-y-2">
             <li>• Teamwork</li>
             <li>• Communication</li>
@@ -32,7 +32,7 @@ export default function About() {
           </ul>
         </div>
         <div className="bg-slate-900 p-6 rounded-xl">
-          <h3 className="text-emerald-400 font-semibold mb-3">Languages</h3>
+          <h3 className="text-cyan-400 font-semibold mb-3">Languages</h3>
           <ul className="text-slate-400 space-y-2">
             <li>• Bengali (Native)</li>
             <li>• English (Fluent)</li>
@@ -41,7 +41,7 @@ export default function About() {
           </ul>
         </div>
         <div className="bg-slate-900 p-6 rounded-xl">
-          <h3 className="text-emerald-400 font-semibold mb-3">Interests</h3>
+          <h3 className="text-cyan-400 font-semibold mb-3">Interests</h3>
           <ul className="text-slate-400 space-y-2">
             <li>• Sketching</li>
             <li>• Swimming</li>

@@ -65,7 +65,7 @@ export default function AIChat() {
     <>
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center shadow-lg transition-all"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white flex items-center justify-center shadow-lg transition-all"
         aria-label="Toggle AI chat"
       >
         {open ? <X size={24} /> : <MessageCircle size={24} />}
@@ -73,10 +73,10 @@ export default function AIChat() {
 
       {open && (
         <div className="fixed bottom-24 right-6 z-50 w-[calc(100vw-3rem)] sm:w-96 h-[520px] bg-slate-900 rounded-2xl border border-slate-700 shadow-2xl flex flex-col overflow-hidden">
-          <div className="bg-emerald-600 px-4 py-3 flex items-center justify-between">
+          <div className="bg-cyan-600 px-4 py-3 flex items-center justify-between">
             <div>
               <p className="font-semibold text-white">Portfolio Assistant</p>
-              <p className="text-xs text-emerald-200">Ask me about Naima's work</p>
+              <p className="text-xs text-cyan-200">Ask me about Naima's work</p>
             </div>
             <button
               onClick={clearChat}
@@ -112,7 +112,7 @@ export default function AIChat() {
                 key={i}
                 className={`${
                   msg.role === 'user'
-                    ? 'bg-emerald-600 text-white ml-8'
+                    ? 'bg-cyan-600 text-white ml-8'
                     : msg.role === 'error'
                     ? 'bg-red-900/50 text-red-300 mr-8'
                     : 'bg-slate-800 text-slate-200 mr-8'
@@ -138,13 +138,13 @@ export default function AIChat() {
                 onChange={(e) => setInput(e.target.value.slice(0, MAX_LENGTH))}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Ask a question..."
-                className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+                className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500"
                 maxLength={MAX_LENGTH}
               />
               <button
                 onClick={() => handleSend()}
                 disabled={loading}
-                className="px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-colors disabled:opacity-50"
+                className="px-3 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white transition-colors disabled:opacity-50"
               >
                 <Send size={18} />
               </button>

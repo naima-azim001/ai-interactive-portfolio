@@ -23,7 +23,7 @@ export default function Gallery({ images }) {
             <button
               key={idx}
               onClick={() => setActive(idx)}
-              className="group overflow-hidden rounded-xl bg-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="group overflow-hidden rounded-xl bg-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
               <img
                 src={src}
