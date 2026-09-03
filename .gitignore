@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+frontend/dist/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment files (keep .env.example)
+*.env
+!backend/.env.example
+
+# Django
+db.sqlite3
+throttle_cache/
+
+# Ollama embeddings
+backend/embeddings/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dev logs
+*.log
