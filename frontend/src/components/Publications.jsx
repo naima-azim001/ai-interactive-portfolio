@@ -12,16 +12,15 @@ export default function Publications() {
       .catch(() => setError('Could not load publications'))
   }, [])
 
-  if (error) return <p className="text-red-400">{error}</p>
-
   return (
-    <section id="publications" className="py-16">
+    <section id="publications" className="py-8">
       <h2 className="text-2xl font-bold text-white mb-8">Publications</h2>
+      {error && <p className="text-slate-500 text-sm mb-6">{error}</p>}
       <div className="space-y-6">
         {publications.map((pub) => (
           <div key={pub.id} className="bg-slate-900 rounded-xl p-6">
             <h3 className="text-lg font-semibold text-white mb-2">{pub.title}</h3>
-            <p className="text-sm text-cyan-400 mb-2">{pub.authors}</p>
+            <p className="text-sm text-amber-400 mb-2">{pub.authors}</p>
             <p className="text-sm text-slate-500 mb-3">
               {pub.venue} · {pub.year}
             </p>
@@ -33,7 +32,7 @@ export default function Publications() {
                 href={pub.publication_url || `https://doi.org/${pub.doi}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 text-sm text-cyan-400 hover:text-cyan-300"
+                className="flex items-center gap-1 text-sm text-amber-400 hover:text-amber-300"
               >
                 <ExternalLink size={16} /> View Publication
               </a>

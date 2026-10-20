@@ -12,17 +12,16 @@ export default function Research() {
       .catch(() => setError('Could not load research'))
   }, [])
 
-  if (error) return <p className="text-red-400">{error}</p>
-
   return (
-    <section id="research" className="py-16">
+    <section id="research" className="py-8">
       <h2 className="text-2xl font-bold text-white mb-8">Research</h2>
+      {error && <p className="text-slate-500 text-sm mb-6">{error}</p>}
       <div className="grid grid-cols-1 gap-6">
         {items.map((item) => (
-          <div key={item.id} className="bg-slate-900 rounded-xl p-6 hover:ring-1 hover:ring-cyan-500 transition-all">
+          <div key={item.id} className="bg-slate-900 rounded-xl p-6 hover:ring-1 hover:ring-amber-500 transition-all">
             <div className="flex flex-wrap items-center justify-between mb-3">
               <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-              <span className="text-xs bg-cyan-600 text-white px-2 py-1 rounded-full">
+              <span className="text-xs bg-amber-500 text-neutral-900 px-2 py-1 rounded-full">
                 {item.status}
               </span>
             </div>

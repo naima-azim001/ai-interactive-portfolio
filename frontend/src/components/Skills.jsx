@@ -32,15 +32,14 @@ export default function Skills() {
       .catch(() => setError('Could not load skills'))
   }, [])
 
-  if (error) return <p className="text-red-400">{error}</p>
-
   return (
-    <section id="skills" className="py-16">
+    <section id="skills" className="py-8">
       <h2 className="text-2xl font-bold text-white mb-8">Technical Skills</h2>
+      {error && <p className="text-slate-500 text-sm mb-6">{error}</p>}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {grouped.map((group) => (
           <div key={group.category} className="bg-slate-900 rounded-xl p-6">
-            <h3 className="text-cyan-400 font-semibold mb-4">{group.category}</h3>
+            <h3 className="text-amber-400 font-semibold mb-4">{group.category}</h3>
             <div className="space-y-3">
               {group.items.map((skill) => (
                 <div key={skill.id}>
@@ -49,7 +48,7 @@ export default function Skills() {
                   </div>
                   <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-cyan-500 rounded-full"
+                      className="h-full bg-amber-500 rounded-full"
                       style={{ width: `${skill.proficiency}%` }}
                     />
                   </div>
