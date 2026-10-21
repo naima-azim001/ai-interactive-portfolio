@@ -7,9 +7,52 @@ const isVideo = (src) => {
   return lower.endsWith('.mp4') || lower.endsWith('.webm') || lower.endsWith('.mov')
 }
 
-export default function Gallery({ images }) {
+export default function Gallery({ images, layout = 'phones' }) {
   const [active, setActive] = useState(null)
+  const [dims, setDims] = useState({})
   const list = (images || []).filter(Boolean)
+
+  const setDim = (idx, w, h) =>
+    setDims((d) => (d[idx] ? d : { ...d, [idx]: { w, h } }))
+
+  const renderMedia = (src, idx, imgClassName, contain = false) => {
+    if (isVideo(src)) {
+      return (
+        <>
+          <video
+            src={src}
+            muted
+            playsInline
+            onLoadedMetadata={(e) =>
+              setDim(idx, e.currentTarget.videoWidth, e.currentTarget.videoHeight)
+            }
+            className={`${imgClassName} object-cover`}
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+            <div className="w-12 h-12 rounded-full bg-amber-500/90 flex items-center justify-center">
+              <Play size={24} className="text-neutral-900 ml-1" />
+            </div>
+          </div>
+        </>
+      )
+    }
+    return (
+      <img
+        src={src}
+        alt={`Project image ${idx + 1}`}
+        loading="lazy"
+        onLoad={(e) =>
+          setDim(idx, e.currentTarget.naturalWidth, e.currentTarget.naturalHeight)
+        }
+        className={`${imgClassName} ${contain ? 'object-contain' : 'object-cover'} transition-transform duration-300 group-hover:scale-105`}
+        onError={(e) => {
+          e.currentTarget.style.display = 'none'
+        }}
+      />
+    )
+  }
+
+  const showcase = layout === 'showcase'
 
   return (
     <div>
@@ -23,41 +66,62 @@ export default function Gallery({ images }) {
             Images will appear here once you add them to this project's gallery.
           </p>
         </div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {list.map((src, idx) => (
+      ) : showcase ? (
+        <div>
+          <div className="flex flex-col md:flex-row gap-4">
             <button
-              key={idx}
-              onClick={() => setActive(idx)}
-              className="group overflow-hidden rounded-xl bg-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 relative"
+              onClick={() => setActive(0)}
+              className="group flex-1 min-w-0 h-64 md:h-[26rem] overflow-hidden rounded-xl border border-slate-700 bg-black shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500 relative"
             >
-              {isVideo(src) ? (
-                <>
-                  <video
-                    src={src}
-                    muted
-                    playsInline
-                    className="w-full h-40 sm:h-52 object-cover"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                    <div className="w-12 h-12 rounded-full bg-amber-500/90 flex items-center justify-center">
-                      <Play size={24} className="text-neutral-900 ml-1" />
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <img
-                  src={src}
-                  alt={`Project image ${idx + 1}`}
-                  loading="lazy"
-                  className="w-full h-40 sm:h-52 object-cover transition-transform duration-300 group-hover:scale-105"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-              )}
+              {renderMedia(list[0], 0, 'w-full h-full', true)}
             </button>
-          ))}
+            {list[1] && (
+              <button
+                onClick={() => setActive(1)}
+                className="group w-full md:w-72 lg:w-80 h-64 md:h-[26rem] shrink-0 overflow-hidden rounded-xl border border-slate-700 bg-slate-800 shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500 relative"
+              >
+                {renderMedia(list[1], 1, 'w-full h-full object-cover')}
+              </button>
+            )}
+          </div>
+          {list.length > 2 && (
+            <div className="grid grid-cols-2 gap-4 mt-4">
+              {list.slice(2).map((src, i) => {
+                const idx = i + 2
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => setActive(idx)}
+                    className="group aspect-video overflow-hidden rounded-xl border border-slate-700 bg-slate-800 shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500 relative"
+                  >
+                    {renderMedia(src, idx, 'w-full h-full object-cover')}
+                  </button>
+                )
+              })}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="flex flex-wrap items-start gap-5">
+          {list.map((src, idx) => {
+            const d = dims[idx]
+            const wide = d && d.w >= d.h
+
+            return (
+              <button
+                key={idx}
+                onClick={() => setActive(idx)}
+                style={wide ? { aspectRatio: `${d.w} / ${d.h}` } : undefined}
+                className={
+                  wide
+                    ? 'group w-72 sm:w-96 overflow-hidden rounded-xl border border-slate-700 bg-slate-800 shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500 relative'
+                    : 'group w-40 sm:w-44 aspect-[9/19.5] overflow-hidden rounded-[1.75rem] border border-slate-700 bg-slate-800 shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500 relative'
+                }
+              >
+                {renderMedia(src, idx, 'w-full h-full object-cover')}
+              </button>
+            )
+          })}
         </div>
       )}
 

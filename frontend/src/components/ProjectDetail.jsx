@@ -110,7 +110,10 @@ export default function ProjectDetail() {
         </div>
 
         <div className="mb-8">
-          <Gallery images={project.gallery} />
+          <Gallery
+            images={project.gallery}
+            layout={project.slug === 'pinn-gearbox-digital-twin' ? 'showcase' : 'phones'}
+          />
         </div>
 
         <div className="mb-8">
