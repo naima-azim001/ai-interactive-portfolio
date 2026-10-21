@@ -46,7 +46,7 @@ export default function Hero() {
             <Linkedin size={18} /> LinkedIn
           </a>
           <a
-            href="/ai-interactive-portfolio/assets/Naima Azim CV.pdf"
+            href="/portfolio/assets/Naima Azim CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             download
